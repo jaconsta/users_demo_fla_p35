@@ -21,11 +21,14 @@ CSRF_SESSION_KEY = "ASecretKey"
 
 
 from app.users.views import UserApiListView, UserApiView, LoginApiView
+from app.business.views import BusinessListView, BusinessApiView
 
 # Register routes
 app.add_url_rule(API_PREFIX+'/user/<string:id>', view_func=UserApiView.as_view('user'))
 app.add_url_rule(API_PREFIX+'/user', view_func=UserApiListView.as_view('user_list'))
 app.add_url_rule(API_PREFIX+'/login', view_func=LoginApiView.as_view('user_login'))
+app.add_url_rule(API_PREFIX+'/business/<string:id>', view_func=BusinessApiView.as_view('business'))
+app.add_url_rule(API_PREFIX+'/business', view_func=BusinessListView.as_view('business_list'))
 
 
 if __name__ == '__main__':
