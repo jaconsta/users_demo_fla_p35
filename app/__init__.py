@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_cors import CORS
 import mongoengine
@@ -9,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Database connection
-MONGO_URI = "mongodb://localhost:32768/lavanda"
+MONGO_URI = os.environ.get('MONGO_URI', "mongodb://localhost:32768/lavanda")
 mongoengine.connect(host=MONGO_URI)
 
 # Application threads.
